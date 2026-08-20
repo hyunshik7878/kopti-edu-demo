@@ -3,6 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="only light">
+<meta name="theme-color" content="#faf8f5">
 <meta name="robots" content="noindex,nofollow">
 <title>교육생 화면 — KOPTI 교육운영 자동화 체험</title>
 <style>
@@ -14,6 +15,9 @@
   :root{color-scheme:only light}
   html,body{background:var(--bg) !important;color:var(--ink) !important}
 }
+/* 최후 방어 — 변환기가 못 뒤집는 배경 '이미지'로 밝은 면을 한 겹 더 깐다 */
+html,body{background-image:linear-gradient(var(--bg),var(--bg)) !important}
+.card{background-image:linear-gradient(var(--card),var(--card)) !important}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.65;
   font-family:'Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif}

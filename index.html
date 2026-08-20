@@ -3,6 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="only light">
+<meta name="theme-color" content="#faf8f5">
 <meta name="robots" content="noindex,nofollow">
 <title>KOPTI 교육운영 자동화 — 체험</title>
 <meta name="description" content="한국광기술원 교육운영 자동화 체험 화면 (샘플 데이터)">
@@ -230,6 +231,12 @@ tr:hover td{background:#fffdf9}
   :root{ color-scheme: only light }
   html,body{ background:var(--bg) !important; color:var(--ink) !important }
 }
+
+/* 최후 방어 — 강제 다크 변환기는 배경 '색'은 뒤집어도 배경 '이미지'는 못 뒤집는다.
+   주요 면의 배경을 같은 색 그라디언트 이미지로 한 겹 더 깔아, 뒤집을 배경색 자체를 없앤다. */
+html,body{ background-image:linear-gradient(var(--bg),var(--bg)) !important }
+header{ background-image:linear-gradient(#fff,#fff) !important }
+.card,.kpi,.modal,.gcard{ background-image:linear-gradient(var(--card),var(--card)) !important }
 
 /* ── 상단 띠 ─────────────────────────────────────────────── */
 #dxBar{
