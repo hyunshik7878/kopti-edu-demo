@@ -7,7 +7,13 @@
 <title>교육생 화면 — KOPTI 교육운영 자동화 체험</title>
 <style>
 :root{--bg:#faf8f5;--card:#fff;--line:#ecdfc8;--ink:#2b2b2b;--soft:#6b6b6b;--muted:#9a938a;
-  --accent:#d97706;--accent-soft:#fef3e2;--accent-ink:#7c5a12;--ok:#2f8f5b;--ok-soft:#e8f5ee}
+  --accent:#d97706;--accent-soft:#fef3e2;--accent-ink:#7c5a12;--ok:#2f8f5b;--ok-soft:#e8f5ee;
+  color-scheme:only light}
+/* 폰 브라우저 강제 다크 변환 방지 — 다크에서도 밝은 설계값을 그대로 유지한다 */
+@media (prefers-color-scheme: dark){
+  :root{color-scheme:only light}
+  html,body{background:var(--bg) !important;color:var(--ink) !important}
+}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.65;
   font-family:'Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif}

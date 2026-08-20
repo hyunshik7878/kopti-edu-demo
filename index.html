@@ -223,6 +223,14 @@ tr:hover td{background:#fffdf9}
    이 화면은 밝은 배경이 설계값이므로 명시적으로 옵트아웃한다. (head 의 meta 와 한 쌍) */
 :root{ color-scheme: only light }
 
+/* 일부 폰 브라우저(삼성인터넷 등)는 위 옵트아웃을 무시하고 색을 강제로 뒤집는다.
+   대신 "다크 모드는 사이트가 직접 처리한다"는 신호(아래 다크 미디어 블록의 존재)가
+   있으면 강제 변환을 건너뛴다 — 내용은 밝은 설계값을 그대로 다시 선언한다. */
+@media (prefers-color-scheme: dark){
+  :root{ color-scheme: only light }
+  html,body{ background:var(--bg) !important; color:var(--ink) !important }
+}
+
 /* ── 상단 띠 ─────────────────────────────────────────────── */
 #dxBar{
   background:linear-gradient(90deg,#7c5a12,#a97c1b);color:#fff;
