@@ -2,6 +2,7 @@
 <html lang="ko"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="only light">
 <meta name="robots" content="noindex,nofollow">
 <title>KOPTI 교육운영 자동화 — 체험</title>
 <meta name="description" content="한국광기술원 교육운영 자동화 체험 화면 (샘플 데이터)">
@@ -218,6 +219,10 @@ tr:hover td{background:#fffdf9}
 <style>
 /* 체험판 전용 — 운영 CSS 뒤에 덧붙는다. 운영 화면에는 영향이 없다. */
 
+/* 안드로이드 크롬·삼성인터넷의 '강제 다크 모드'가 색을 뒤집어 화면을 깨뜨린다 —
+   이 화면은 밝은 배경이 설계값이므로 명시적으로 옵트아웃한다. (head 의 meta 와 한 쌍) */
+:root{ color-scheme: only light }
+
 /* ── 상단 띠 ─────────────────────────────────────────────── */
 #dxBar{
   background:linear-gradient(90deg,#7c5a12,#a97c1b);color:#fff;
@@ -352,16 +357,17 @@ nav button.dxTab::after{
   .modal .mb{padding:15px 16px}
   .modal .mf{padding:12px 16px}
 
-  /* 설명 칸은 카드 위로 올린다 — 폰에서 좌우로 나누면 둘 다 못 읽는다 */
-  .dxRow{flex-direction:column;gap:9px;margin-bottom:12px}
+  /* 설명 칸은 카드 위로 올린다 — 폰에서 좌우로 나누면 둘 다 못 읽는다.
+     세로 배치에서는 align-items:flex-start 가 폭을 내용만큼 줄여 버리므로 stretch 로 되돌린다 */
+  .dxRow{flex-direction:column;gap:9px;margin-bottom:12px;align-items:stretch}
   .dxNote{flex:none;width:auto;align-self:auto;padding:11px 13px}
   .dxNote b{font-size:12.5px}
   .dxNote span{font-size:12.5px;line-height:1.75}
   .dxNote.empty{display:none}
 
-  /* 유도 띠는 탭 아래 한 줄로 */
+  /* 유도 띠는 탭 아래 한 줄로 (.hwrap 이 wrap 이라 제 줄로 내려간다) */
   #dxNavTip{order:9;flex:0 0 100%;min-width:0;margin:5px 0 0;white-space:normal;
-    text-align:center;font-size:12px}
+    text-align:center;font-size:12px;margin-left:0}
   #dxHint.go{font-size:13.5px}
 }
 
@@ -4618,7 +4624,9 @@ $('btnSaveSettings').onclick=function(b){
   var navTip = document.createElement('span');
   navTip.id = 'dxNavTip';
   navTip.innerHTML = '👈 <b>통계</b>와 <b>설정</b> 버튼도 클릭해 보세요 — 실제 화면이 그대로 열립니다';
-  nav.appendChild(navTip);
+  /* nav 는 폰에서 가로 스크롤(nowrap)이라 안에 넣으면 띠가 잘린다 —
+     nav **뒤**(.hwrap 직속)에 두면 데스크톱은 탭 오른쪽, 폰은 제 줄로 내려간다 */
+  nav.parentNode.insertBefore(navTip, nav.nextSibling);
 
   function markTabs() {
     var 남음 = 0;
